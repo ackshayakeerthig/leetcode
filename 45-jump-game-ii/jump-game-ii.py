@@ -6,11 +6,12 @@ class Solution:
         jumpfrom=lastindex-1
         while jumpfrom>=0:
             if jumpfrom+nums[jumpfrom]>=lastindex :
-                i=jumpfrom-1
-                while i>=0:
+                i=0
+                while i<jumpfrom:
                     if i+nums[i]>=lastindex and i<jumpfrom:
                         jumpfrom=i
-                    i-=1
+                        break
+                    i+=1
                 lastindex=jumpfrom
                 totaljumps+=1
             jumpfrom-=1
