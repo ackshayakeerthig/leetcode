@@ -4,8 +4,18 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        teststr=[]
-        for char in s:
-            if char.isalnum():
-                teststr.append(char.lower())
-        return teststr[::-1]==teststr[::]
+        start=0
+        end=len(s)-1
+        while (start<end):
+            if s[start].isalnum() and s[end].isalnum():
+                if s[start].lower()==s[end].lower():
+                    start+=1
+                    end-=1
+                else:
+                    return False
+            elif s[start].isalnum() ==False:
+                start+=1
+            elif s[end].isalnum() ==False:
+                end-=1
+        return True
+            
