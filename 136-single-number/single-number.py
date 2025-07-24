@@ -6,6 +6,6 @@ class Solution(object):
         """
         x=0
         for num in nums:
-            x^=num
+            x=x^num
         return x
         
