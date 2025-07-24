@@ -15,7 +15,7 @@ class Solution(object):
     def dfs(self,i,visited,graph):
         visited[i]=1
         for j in range(len(graph)):
-            if visited[j]==0 and graph[i][j]:
+            if visited[j]==0 and graph[i][j] and i!=j:
                 self.dfs(j,visited,graph)
     
 
