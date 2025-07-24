@@ -5,8 +5,7 @@ class Solution(object):
         :rtype: int
         """
         x=0
-        n=len(nums)
-        for i in range(n):
-            x=x^nums[i]
+        for num in nums:
+            x=x^num
         return x
         
