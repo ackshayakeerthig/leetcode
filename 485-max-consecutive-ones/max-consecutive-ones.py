@@ -6,8 +6,8 @@ class Solution(object):
         """
         maxx=0
         count=0
-        for num in nums:
-            if num==1:
+        for i in range(len(nums)):
+            if nums[i]==1:
                 count+=1
                 maxx=max(maxx,count)
             else:
