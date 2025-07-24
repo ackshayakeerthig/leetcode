@@ -5,13 +5,12 @@ class Solution(object):
         :rtype: int
         """
         max=0
-        i=0
-        while (i<len(nums)):
-            count=0
-            while (i<len(nums) and nums[i]==1  ):
-                i+=1
+        count=0
+        for i in range(len(nums)):
+            if nums[i]==1:
                 count+=1
-            if count>max:
-                max=count
-            i+=1
+                if count>max:
+                    max=count
+            else:
+                count=0
         return max
