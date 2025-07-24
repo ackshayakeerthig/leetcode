@@ -5,25 +5,13 @@ class Solution(object):
         :type s: List[int]
         :rtype: int
         """
-        d={}
-        for i,val in enumerate(set(s)):
-            d[val]=s.count(val)
+        s.sort()
+        g.sort()
+        child,cookie=0,0
         count=0
-        g.sort(reverse=True)
-        keys=d.keys()
-        keys.sort(reverse=True)
-        for i in range(len(g)):
-            if len(keys)<=0:
-                return count
-            key=keys[0]
-            if g[i]<=key:
+        while child<len(g) and cookie<len(s):
+            if g[child]<=s[cookie]:
                 count+=1
-                d[key]-=1
-                if d[key]<=0:
-                    del d[key]
-                    del keys[0]
+                child+=1
+            cookie+=1
         return count
-            
-
-
-        
