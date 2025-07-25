@@ -4,8 +4,8 @@ class Solution:
         maxprofit=0
         for i in range(1,len(prices)):
             profit=prices[i]-mini
-            if profit>maxprofit:
-                maxprofit=profit
-            if prices[i]<mini:
-                mini=prices[i]
+            # if profit>maxprofit:
+            maxprofit=max(profit,maxprofit)
+            # if prices[i]<mini:
+            mini=min(prices[i],mini)
         return maxprofit
