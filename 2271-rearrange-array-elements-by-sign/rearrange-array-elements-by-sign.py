@@ -6,16 +6,14 @@ class Solution(object):
         """
         i=0
         j=1
-        k=0
         n=len(nums)
         valid=[0 for _ in range(n)]
-        while k<n:
-            if nums[k]>=0:
-                valid[i]=nums[k]
+        for num in nums:
+            if num>=0:
+                valid[i]=num
                 i+=2
             else:
-                valid[j]=nums[k]
+                valid[j]=num
                 j+=2
-            k+=1
         return valid
         
