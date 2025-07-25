@@ -1,19 +1,13 @@
-class Solution(object):
-    def rearrangeArray(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[int]
-        """
-        i=0
-        j=1
-        n=len(nums)
-        valid=[0 for _ in range(n)]
+class Solution:
+    def rearrangeArray(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        res = [0] * n
+        pos, neg = 0, 1
         for num in nums:
-            if num>=0:
-                valid[i]=num
-                i+=2
+            if num > 0:
+                res[pos] = num
+                pos += 2
             else:
-                valid[j]=num
-                j+=2
-        return valid
-        
+                res[neg] = num
+                neg += 2
+        return res
