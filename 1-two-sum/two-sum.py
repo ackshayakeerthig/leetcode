@@ -3,8 +3,7 @@ class Solution:
         d={}
         for i in range(len(nums)):
             needed=target-nums[i]
-            if needed in d.keys():
+            if needed in d:
                 return [d[needed],i]
-            else:
-                d[nums[i]]=i
+            d[nums[i]]=i
         return -1
