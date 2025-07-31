@@ -3,13 +3,15 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        rows=len(matrix)
-        cols=len(matrix[0])
-        new=[[0]*cols for _ in range(rows)]
-        for i in range(rows):
-            for j in range(cols):
-                new[j][cols-i-1]=matrix[i][j]
-        for i in range(rows):
-            for j in range(cols):
-                matrix[i][j]=new[i][j]
+        n=len(matrix)
+        for i in range(n):
+            for j in range(i):
+                matrix[i][j],matrix[j][i]=matrix[j][i],matrix[i][j]
+        for i in range(n):
+            j=0
+            k=n-1
+            while (j<k):
+                matrix[i][j],matrix[i][k]=matrix[i][k],matrix[i][j]
+                j+=1
+                k-=1
         
