@@ -11,14 +11,14 @@ class Solution:
                 dfs(row-1,col)
                 dfs(row,col-1)
         for i in range(rows):
-            # if board[i][0]=='O':
+            if board[i][0]=='O':
                 dfs(i,0)
-            # if board[i][cols-1]=='O':
+            if board[i][cols-1]=='O':
                 dfs(i,cols-1)
         for i in range(cols):
-            # if board[0][i]=='O':
+            if board[0][i]=='O':
                 dfs(0,i)
-            # if board[rows-1][i]=='O':
+            if board[rows-1][i]=='O':
                 dfs(rows-1,i)
         
         for row in range(rows):
