@@ -1,19 +1,31 @@
+from typing import List
+
 class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
-        n=len(nums)
-        st=set()
-        for i in range(n):
-            for j in range(i+1,n):
-                tempset=set()
-                for k in range(j+1,n):
-                    needed=target-(nums[i]+nums[j]+nums[k])
-                    if needed in tempset:
-                        temp=[nums[i],nums[j],nums[k],needed]
-                        temp.sort()
-                        st.add(tuple(temp))
-                    tempset.add(nums[k])
-        return list(st)
+        n = len(nums)
+        nums.sort()
 
-
-
-        
+        ans = []
+        for i in range(n - 3):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            for j in range(i + 1, n - 2):
+                if j > i + 1 and nums[j] == nums[j - 1]:
+                    continue
+                k, l = j + 1, n - 1
+                while k < l:
+                    summ = nums[i] + nums[j] + nums[k] + nums[l]
+                    if summ == target:
+                        ans.append([nums[i], nums[j], nums[k], nums[l]])
+                        k += 1
+                        l -= 1
+                        # skip duplicates after storing result
+                        while k < l and nums[k] == nums[k - 1]:
+                            k += 1
+                        while k < l and nums[l] == nums[l + 1]:
+                            l -= 1
+                    elif summ < target:
+                        k += 1  # no duplicate skipping here!
+                    else:
+                        l -= 1  # no duplicate skipping here!
+        return ans
