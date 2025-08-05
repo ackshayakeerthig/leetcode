@@ -27,12 +27,8 @@ class Solution:
                             l-=1
                     elif summ<target:
                         k+=1
-                        # while (k<l and nums[k]==nums[k-1] ):
-                        #     k+=1
                     else:
                         l-=1
-                        # while (k<l and nums[l]==nums[l-1] ):
-                        #     l-=1
         return ans
 
 
