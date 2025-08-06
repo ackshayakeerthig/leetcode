@@ -15,11 +15,11 @@ class Solution:
                     flowerbed[i]=1
                     plants-=1
                 elif i==0:
-                    if right < n and flowerbed[right]==0:
+                    if  flowerbed[right]==0:
                         flowerbed[i]=1
                         plants-=1
                 elif  i==n-1:
-                    if left>0 and flowerbed[left]==0:
+                    if  flowerbed[left]==0:
                         flowerbed[i]=1
                         plants-=1
                 
