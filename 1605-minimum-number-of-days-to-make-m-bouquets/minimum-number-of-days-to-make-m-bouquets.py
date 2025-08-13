@@ -14,8 +14,14 @@ class Solution:
                     total+=(count//k)
                     count=0
             total+=(count//k)
-            return True if total>=m  else False
-        low,high=min(bloomday),max(bloomday)
+            return total>=m
+        low=bloomday[0]
+        high=bloomday[0]
+        for day in bloomday:
+            if day<low:
+                low=day
+            elif day>high:
+                high=day
         ans=None
         while (low<=high):
             mid=(low+high)//2
