@@ -7,8 +7,8 @@ class Solution:
         def bouquets(day):
             count=0
             total=0
-            for i in range(n):
-                if bloomday[i]<=day:
+            for dayi in bloomday:
+                if dayi<=day:
                     count+=1
                 else:
                     total+=(count//k)
