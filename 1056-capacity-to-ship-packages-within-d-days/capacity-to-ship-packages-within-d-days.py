@@ -1,13 +1,14 @@
 class Solution:
     def shipWithinDays(self, weights: List[int], days: int) -> int:
-        low=weights[0]
-        total_weight=0
-        n=1
-        for weight in weights:
-            if weight>low:
-                low=weight
-            total_weight+=weight
-            n+=1
+        # low=weights[0]
+        # total_weight
+        low=max(weights)
+        total_weight=sum(weights)
+        # for weight in weights:
+        #     if weight>low:
+        #         low=weight
+        #     total_weight+=weight
+        #     n+=1
         def loadable(capacity):
             day=1
             load=0
