@@ -21,6 +21,6 @@ class Solution:
             if subarrays<=k:
                 ans=mid
                 high=mid-1
-            elif subarrays>k:
+            else:
                 low=mid+1
         return ans
