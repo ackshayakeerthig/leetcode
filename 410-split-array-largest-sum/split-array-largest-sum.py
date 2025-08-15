@@ -11,6 +11,8 @@ class Solution:
                 else:
                     summ=num
                     subarrays+=1
+                if subarrays>k:
+                    return k+1
             return subarrays
         ans=None
         while (low<=high):
