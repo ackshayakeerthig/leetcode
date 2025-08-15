@@ -12,13 +12,12 @@ class Solution:
                     summ=num
                     subarrays+=1
                 if subarrays>k:
-                    return k+1
-            return subarrays
+                    return False
+            return True
         ans=None
         while (low<=high):
             mid=(low+high)//2
-            subarrays=find(mid)
-            if subarrays<=k:
+            if find(mid):
                 ans=mid
                 high=mid-1
             else:
