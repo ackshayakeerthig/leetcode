@@ -4,6 +4,8 @@ class Solution:
         start=0
         sum_diff=0
         summ=0
+        if sum(gas)-sum(cost)<0:
+            return -1
         for i in range(n):
             difference=gas[i]-cost[i]
             sum_diff+=difference
@@ -11,7 +13,5 @@ class Solution:
             if summ<0:
                 start=i+1
                 summ=0
-        if sum_diff>=0:
-            return start
-        return -1
+        return start
                 
