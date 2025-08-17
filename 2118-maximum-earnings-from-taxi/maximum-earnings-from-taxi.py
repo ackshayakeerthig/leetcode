@@ -5,9 +5,8 @@ class Solution:
         for j in range(len(rides)):
             start,end,tip=rides[j]
             i=bisect.bisect_right(dp,start,key=lambda x :x[0])
-            earning=end-start+tip
             prev_earning=dp[i-1][1]
-            next_earning=prev_earning+earning
+            next_earning=prev_earning+end-start+tip
             if next_earning > dp[-1][1]:
                 dp.append((end,next_earning))
             else:
