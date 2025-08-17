@@ -10,8 +10,6 @@ class Solution:
                     board[q][i]="Q"
                     nqueens(q+1)
                     board[q][i]="."
-                else:
-                    continue
         def issafe(row,col):
             for i in range(row):
                 if board[i][col]=="Q":
