@@ -17,11 +17,22 @@ class Solution:
             val=grid[i][j1]
             if j1!=j2:
                 val+=grid[i][j2]
-            for dj1 in range(-1,2):
-                for dj2 in range(-1,2):
-                    cherries=find(i+1,j1+dj1,j2+dj2)
-                    if cherries>=maxi:
-                        maxi=cherries
+            # for dj1 in range(-1,2):
+            #     for dj2 in range(-1,2):
+            #         cherries=find(i+1,j1+dj1,j2+dj2)
+            #         if cherries>=maxi:
+            #             maxi=cherries
+            maxi=max(
+                find(i+1,j1-1,j2-1),
+                find(i+1,j1-1,j2),
+                find(i+1,j1-1,j2+1),
+                find(i+1,j1,j2-1),
+                find(i+1,j1,j2),
+                find(i+1,j1,j2+1),
+                find(i+1,j1+1,j2-1),
+                find(i+1,j1+1,j2),
+                find(i+1,j1+1,j2+1),
+            )
             dp[i][j1][j2]= maxi+val
             return dp[i][j1][j2]
         ans=find(0,0,cols-1)
