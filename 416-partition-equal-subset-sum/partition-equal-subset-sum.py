@@ -7,7 +7,6 @@ class Solution:
         n=len(nums)
         if n==0:
             return False
-        # dp=[[-1]*(target+1) for _ in range(n)]
         cur=[False]*(target+1)
         prev=[False]*(target+1)
         prev[0]=cur[0]=True
@@ -22,18 +21,3 @@ class Solution:
                 cur[j]=take or nottake
             prev,cur=cur,prev
         return prev[target]
-
-        # def find(index,target):
-        #     if target==0:
-        #         return True
-        #     if index==0:
-        #         return target==nums[index]
-        #     if dp[index][target]!=-1:
-        #         return dp[index][target]
-        #     donttake=find(index-1,target)
-        #     take=False
-        #     if nums[index]<=target:
-        #         take=find(index-1,target-nums[index])
-        #     dp[index][target]= take or donttake
-        #     return dp[index][target]
-        # return find(n-1,target)
