@@ -1,15 +1,13 @@
-def subset(nums : list, ans:list,temp:list,idx):
-    if (idx==len(nums)):
-        ans.append(temp)
-        return 
-    # temp.append()
-    subset(nums,ans,temp+[nums[idx]],idx+1)
-    subset(nums,ans,temp,idx+1)
-    # temp.pop()
-    # subset(nums,ans,temp,idx+1)
-
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        l=[]
-        subset(list(set(nums)),l,[],0)
-        return l
+        n=len(nums)
+        subsets=[]
+        for include in range(2**n):
+            test_include=include
+            subset=[]
+            for num in nums:
+                if test_include%2==1:
+                    subset.append(num)
+                test_include>>=1
+            subsets.append(subset)
+        return subsets
