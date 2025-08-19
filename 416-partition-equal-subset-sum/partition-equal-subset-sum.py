@@ -9,14 +9,14 @@ class Solution:
         def find(index,target):
             if target==0:
                 return True
-            if index==n-1:
+            if index==0:
                 return target==nums[index]
             if dp[index][target]!=-1:
                 return dp[index][target]
-            donttake=find(index+1,target)
+            donttake=find(index-1,target)
             take=False
             if nums[index]<=target:
-                take=find(index+1,target-nums[index])
+                take=find(index-1,target-nums[index])
             dp[index][target]= take or donttake
             return dp[index][target]
-        return find(0,target)
+        return find(n-1,target)
