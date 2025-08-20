@@ -5,21 +5,24 @@ class Solution:
         if target%2==1 or target<0:
             return 0
         target//=2
-        dp=[[0]*(target+1) for _ in range(n)]
+        # dp=[[0]*(target+1) for _ in range(n)]
+        prev=[0]*(target+1)
+        cur=[0]*(target+1)
         # for i in range(n):
         #     dp[i][0]=1
         
-        dp[0][0]=1
+        prev[0]=1
         if nums[0]==0:
-            dp[0][0]=2
+            prev[0]=2
         if nums[0]!=0 and nums[0]<=target:
-            dp[0][nums[0]]=1
+            prev[nums[0]]=1
         for i in range(1,n):
             for j in range(target+1):
-                dp[i][j]=dp[i-1][j]
+                cur[j]=prev[j]
                 if nums[i]<=j:
-                    dp[i][j]+=dp[i-1][j-nums[i]]
-        return dp[n-1][target]
+                    cur[j]+=prev[j-nums[i]]
+            prev,cur=cur,prev
+        return prev[target]
         # def count(index,target):
         #     if target<0:
         #         return 0
