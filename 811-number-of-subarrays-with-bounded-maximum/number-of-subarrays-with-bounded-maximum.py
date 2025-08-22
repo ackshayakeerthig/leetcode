@@ -6,8 +6,8 @@ class Solution:
             for num in nums:
                 if num<=bound:
                     cur+=1
-                    cnt+=cur
                 else:
                     cur=0
+                cnt+=cur
             return cnt
         return count(right)-count(left-1)
