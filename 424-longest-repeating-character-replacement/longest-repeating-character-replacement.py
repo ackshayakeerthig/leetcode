@@ -8,9 +8,9 @@ class Solution:
             letter=s[r]
             hash[ord(letter)-ord('A')]+=1
             maxfreq=max(maxfreq,hash[ord(letter)-ord('A')])
-            while r-l+1 - maxfreq>k:
+            if r-l+1 - maxfreq>k:
                 hash[ord(s[l])-ord('A')]-=1
-                maxfreq=max(hash)
+                # maxfreq=max(hash)
                 l+=1
                 
             if r-l+1 - maxfreq <=k:
