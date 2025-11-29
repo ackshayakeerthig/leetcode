@@ -1,17 +1,24 @@
 class Solution:
-    def uniquePathsWithObstacles(self, obstacle: List[List[int]]) -> int:
-        rows=len(obstacle)
-        cols=len(obstacle[0])
-        dp=[[-1]*cols for _ in range(rows)]
-        return self.findways(dp,obstacle,rows-1,cols-1)
-    def findways(self,dp,obstacle,m,n):
-        if dp[m][n]==-1:
-            if m==0 and n==0:
-                dp[m][n]=0 if obstacle[m][n]==1 else 1
-            elif m==0:
-                dp[m][n]= 0 if obstacle[m][n]==1 else self.findways(dp,obstacle,m,n-1) 
-            elif n==0:
-                dp[m][n]=0 if obstacle[m][n]==1 else self.findways(dp,obstacle,m-1,n) 
-            else:
-                dp[m][n]=0 if obstacle[m][n]==1 else self.findways(dp,obstacle,m,n-1) +self.findways(dp,obstacle,m-1,n)
-        return dp[m][n]
+    def uniquePathsWithObstacles(self, grid: List[List[int]]) -> int:
+        rows=len(grid)
+        cols=len(grid[0])
+        dp=[[0]*cols for _ in range(rows)]
+        dp[0][0]=1
+        if grid[0][0]==1:
+            return 0
+        # if rows>1:
+        #     dp[1][0]=1 if grid[1][0] else 0
+        # if cols>1:
+            dp[0][1]=1 if grid[0][1] else 0
+        for i in range(1,rows):
+            dp[i][0]=dp[i-1][0] if grid[i][0]!=1 else 0
+        for i in range(1,cols):
+            dp[0][i]=dp[0][i-1] if grid[0][i]!=1 else 0
+        for i in range(1,rows):
+            for j in range(1,cols):
+                if grid[i][j]==1:
+                    dp[i][j]=0
+                else:
+                    dp[i][j]=dp[i-1][j]+dp[i][j-1]
+        return dp[-1][-1]
+            
