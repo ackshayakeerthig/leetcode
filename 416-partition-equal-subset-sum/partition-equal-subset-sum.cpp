@@ -7,8 +7,22 @@ public:
         }
         sum/=2;
         int n=nums.size();
-        vector<vector<int>> dp(n, vector<int>(sum+1, -1));
-        return funct(nums,sum, 0, 0,dp);
+        vector<vector<int>> dp(n+1, vector<int>(sum+1, false));
+        for (int i=0;i<=n;i++){
+            dp[i][0]=true;
+        }
+        for (int i=1;i<=n;i++){
+            for (int j=1;j<=sum;j++){
+                bool take=false;
+                bool not_take=dp[i-1][j];
+                if (j>=nums[i-1]){
+                    take=dp[i-1][j-nums[i-1]];
+                }
+                dp[i][j]=take || not_take;
+            }
+        }
+        // return funct(nums,sum, 0, 0,dp);
+        return dp[n][sum];
     }
 private:
     bool funct(vector<int>& nums, int sum, int temp, int i,vector<vector<int>> & dp){
