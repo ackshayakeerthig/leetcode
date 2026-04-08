@@ -8,8 +8,12 @@ class Solution:
         hp=[] # (time,src)
         heapq.heappush(hp,(0,k))
         time_taken[k]=0
+        visited=set()
         while hp:
             t,current=heapq.heappop(hp)
+            if current in visited:
+                continue
+            visited.add(current)
             for target,edge_time in d[current]:
                     if time_taken[target]>t+edge_time:
                         time_taken[target]=t+edge_time
