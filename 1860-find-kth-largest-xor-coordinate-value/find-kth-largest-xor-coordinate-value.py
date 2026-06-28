@@ -20,4 +20,5 @@ class Solution:
                 heapq.heappush(h,matrix[i][j])
                 if len(h)>k:
                     heapq.heappop(h)
-        return h[-k]
+        print(h)
+        return h[0]
