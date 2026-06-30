@@ -6,10 +6,4 @@ class Solution:
             for letter in word:
                 word_tup[ord(letter)-ord('a')]+=1
             ans[tuple(word_tup)].append(word)
-        answer=[]
-        for key in ans.keys():
-            l=[]
-            for word in ans[key]:
-                l.append(word)
-            answer.append(l)
-        return answer
+        return list(ans.values())
