@@ -1,12 +1,10 @@
-class Solution(object):
-    def topKFrequent(self, nums, k):
-        """
-        :type nums: List[int]
-        :type k: int
-        :rtype: List[int]
-        """
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         freq=Counter(nums)
-        # max_heap=[(-count,num) for num, count in freq.items()]
-        # heapq.heapify(max_heap)
-        return heapq.nlargest(k,freq.keys(),key=lambda x: freq[x])
-        
+        h=[]
+        for key,val in freq.items():
+            heapq.heappush(h,(-val,key))
+        answer=[]
+        for i in range(min(k,len(freq))):
+            answer.append(heapq.heappop(h)[1])
+        return answer
