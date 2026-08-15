@@ -1,6 +1,8 @@
 class Node{
         Node links[]=new Node[26];
         boolean flag=false;
+        int cntEndsWith=0;
+        int cntPrefix=0;
         public Node(){}
         boolean containsKey(char ch){
             return (links[ch-'a']!=null);
@@ -17,6 +19,24 @@ class Node{
         boolean isEnd(){
             return flag;
         }
+        void increaseEnd(){
+            cntEndsWith++;
+        }
+        void increasePrefix(){
+            cntPrefix++;
+        }
+        void deleteEnd(){
+            cntEndsWith--;
+        }
+        void reducePrefix(){
+            cntPrefix--;
+        }
+        int getEnd(){
+            return cntEndsWith;
+        }
+        int getPrefix(){
+            return cntPrefix;
+        }
 }
 
 class Trie {
@@ -32,8 +52,10 @@ class Trie {
                 node.put(word.charAt(i),new Node());
             }
             node=node.get(word.charAt(i));
+            node.increasePrefix();
         }
         node.setEnd();
+        node.increaseEnd();
     }
     
     public boolean search(String word) {
@@ -47,6 +69,27 @@ class Trie {
         return node.isEnd();
     }
     
+    public int countWordsEqualTo(String word) {
+        Node node=root;
+        for (int i=0;i<word.length();i++){
+            if (!node.containsKey(word.charAt(i))){
+                return 0;
+            }
+            node=node.get(word.charAt(i));
+        }
+        return node.getEnd();
+    }
+    public int countWordsStartingWith(String word) {
+        Node node=root;
+        for (int i=0;i<word.length();i++){
+            if (!node.containsKey(word.charAt(i))){
+                return 0;
+            }
+            node=node.get(word.charAt(i));
+        }
+        return node.getPrefix();
+    }
+    
     public boolean startsWith(String prefix) {
         Node node=root;
         for (int i=0;i<prefix.length();i++){
@@ -57,6 +100,17 @@ class Trie {
         }
         return true;
     }
+    public void erase(String word){
+        Node node=root;
+        for (int i=0;i<word.length();i++){
+            if (!node.containsKey(word.charAt(i))){
+                node.put(word.charAt(i),new Node());
+            }
+            node=node.get(word.charAt(i));
+            node.reducePrefix();
+        }
+        node.deleteEnd();
+        }
 }
 
 /**
