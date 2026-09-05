@@ -1,6 +1,15 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        dp=[0,1,2]
-        for i in range(3,n+1):
-            dp.append(dp[-1]+dp[-2])
-        return dp[n]
+        prev_of_prev=1
+        if n==1:
+            return 1
+        prev=2
+        if n==2:
+            return 2
+        cur=None
+        for i in range(2,n):
+            cur=prev_of_prev+prev
+            prev_of_prev=prev
+            prev=cur
+        return cur
+        
